@@ -1,0 +1,39 @@
+extends layout
+
+block content    
+    h1 #{title}
+
+    br
+
+    p
+        a.btn.btn-success(href="/create") Add a student
+        
+    table.table.table-bordered.table-condensed
+        thead
+            tr
+                th(scope='col') First Name
+                th(scope='col') Last Name
+                th(scope='col') School
+                th 
+                th 
+
+        tbody
+            each data, i in jsonData
+                tr
+                    th(scope='col') #{data.FirstName}
+                    td #{data.LastName}
+                    td #{data.School}
+                    td
+                        a.btn.btn-primary.btn-sm(href="/edit/" + data._id) EDIT
+                        
+                    td
+                        a.btn.btn-primary.btn-sm(href="/delete/" + data._id) DELETE
+
+    br
+    br
+
+    p 
+        b Note: 
+        |Try 
+        a(href="api/dummy") /dummydata
+        |  to generate some sample students.

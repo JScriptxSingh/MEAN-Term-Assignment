@@ -1,0 +1,25 @@
+extends layout
+
+block content    
+    h1 #{title}
+
+    h4 Are you sure you want to delete the following course?
+    br
+    table.table
+        tr
+            th First Name:
+            td #{jsonData.FirstName}  
+
+        tr  
+            th Last Name:
+            td #{jsonData.LastName}
+
+        tr
+            th School:
+            td #{jsonData.School}
+
+    form(action="/delete" method="post")
+        input(type="hidden" name="studentId" value=jsonData._id)
+        input.btn.btn-primary(type="submit" value="Delete")
+        |  
+        a.btn.btn-primary(href="/") Cancel
